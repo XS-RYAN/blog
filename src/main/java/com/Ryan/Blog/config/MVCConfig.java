@@ -18,10 +18,10 @@ public class MVCConfig implements WebMvcConfigurer {
         registry.addViewController("/about").setViewName("about");
     }
 
-//    @Bean
-//    public MyInterceptor myInterceptor(){
-//        return new MyInterceptor();
-//    }
+    @Bean
+    public MyInterceptor myInterceptor(){
+        return new MyInterceptor();
+    }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
