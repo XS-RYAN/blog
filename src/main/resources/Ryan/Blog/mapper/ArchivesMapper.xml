@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Ryan.Blog.mapper.ArchivesMapper">
+
+    <select id="findAllYear" resultType="String">
+        SELECT DATE_FORMAT( b.create_time, '%Y' ) AS YEAR FROM t_blog b group BY YEAR order by year DESC
+    </select>
+
+    <select id="findBlogByYear" parameterType="String" resultType="blog">
+        SELECT * FROM t_blog b WHERE DATE_FORMAT( b.create_time, '%Y' ) = #{year} order by b.create_time desc
+    </select>
+</mapper>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments :: head(~{::title})">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>关于我</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+  <link rel="stylesheet" href="../static/css/me.css" >
+  <link rel="shortcut icon" href="../static/ico/favicon.ico"/>
+  <link rel="bookmark" href="../static/ico/favicon.ico"/>
+
+  <style>
+    .font{
+      font-family: "等线 Light"!important;
+      font-weight: bolder !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!--导航-->
+  <nav class="ui inverted attached segment m-padded-tb-mini m-shadow-small" th:replace="_fragments :: menu(5)" >
+    <div class="ui container">
+      <div class="ui inverted secondary stackable menu">
+        <h2 class="ui yellow header item">Ryan</h2>
+        <a href="#" class=" m-item item m-mobile-hide"><i class="mini home icon"></i>首页</a>
+        <a href="#" class="m-item item m-mobile-hide"><i class="mini idea icon"></i>分类</a>
+        <a href="#" class="m-item item m-mobile-hide"><i class="mini tags icon"></i>标签</a>
+        <a href="#" class="m-item item m-mobile-hide"><i class="mini clone icon"></i>归档</a>
+        <a href="#" class="active m-item item m-mobile-hide"><i class="mini info icon"></i>关于我</a>
+        <div class="right m-item item m-mobile-hide">
+          <div class="ui icon inverted  input m-margin-tb-tiny">
+            <input type="text" placeholder="Search">
+            <i class="search link icon"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
+      <i class="sidebar icon"></i>
+    </a>
+  </nav>
+
+  <!--中间内容-->
+  <div  class="m-container m-padded-tb-huge">
+    <div class="ui container">
+
+      <div class="ui stackable grid">
+        <div class="eleven wide column">
+          <div class="ui segment">
+            <img src="../static/images/profilePhoto.jpg" th:src="@{/images/profilePhoto.jpg}" alt="" class="ui rounded image">
+          </div>
+        </div>
+        <div class="five wide column">
+          <div class="ui top attached segment">
+            <div class="ui header">关于我</div>
+          </div>
+          <div class="ui attached segment">
+
+            <p class="m-text font" >Ryan，95后，Java小白，学习中</p>
+            <p class="m-text font">但行好事，莫问前程>
+            <p class="m-text font">追随本心，无问东西</p>
+            <p style="color: grey">
+              <i class="location arrow icon grey "></i>
+              江苏 - 南通
+            </p>
+          </div>
+          <div class="ui attached segment">
+            <div class="ui tag teal label m-margin-tb-tiny">代码</div>
+            <div class="ui tag teal label m-margin-tb-tiny">骑行</div>
+            <div class="ui tag teal label m-margin-tb-tiny">滑雪</div>
+            <div class="ui tag teal label m-margin-tb-tiny">养猫</div>
+            <div class="ui tag teal label m-margin-tb-tiny">睡觉</div>
+            <div class="ui tag teal label m-margin-tb-tiny">做饭</div>
+          </div>
+          <div class="ui attached segment">
+            <div class="ui label m-margin-tb-tiny "><i class="code branch icon"></i> JavaEE </div>
+            <div class="ui label m-margin-tb-tiny"><i class="code branch icon"></i> MySQL </div>
+            <div class="ui label m-margin-tb-tiny"><i class="code branch icon"></i> JDBC </div>
+            <div class="ui label m-margin-tb-tiny"><i class="code branch icon"></i> SpringMvc </div>
+            <div class="ui label m-margin-tb-tiny"><i class="code branch icon"></i> SpringBoot </div>
+            <div class="ui label m-margin-tb-tiny"><i class="code branch icon"></i> Spring </div>
+            <div class="ui label m-margin-tb-tiny"><i class="code branch icon"></i> Mybatis </div>
+            <div class="ui label m-margin-tb-tiny"><i class="code branch icon"></i> Tomcat </div>
+            <div class="ui label m-margin-tb-tiny"><i class="code branch icon"></i> Maven </div>
+            <div class="ui label m-margin-tb-tiny"><i class="code branch icon"></i> HTML5 </div>
+            <div class="ui label m-margin-tb-tiny"><i class="code branch icon"></i> CSS </div>
+            <div class="ui label m-margin-tb-tiny"><i class="code branch icon"></i> JavaScript </div>
+            <div class="ui label m-margin-tb-tiny"><i class="code branch icon"></i> Thymeleaf </div>
+            <div class="ui label m-margin-tb-tiny"><i class="code branch icon"></i> ... </div>
+          </div>
+
+          <div class="ui bottom attached segment">
+<!--            <a href="#" class="ui circular icon button"><i class="github icon"></i></a>-->
+            <a href="#" class="ui wechat circular icon button"><i class="weixin icon"></i></a>
+            <a href="#" class="ui qq circular icon button" data-content="1148356010" data-position="bottom center"><i class="qq icon"></i></a>
+            <a href="#" class="ui github circular icon button" data-content="" data-position="bottom center"><i class="github icon"></i></a>
+          </div>
+
+          <div class="ui wechat-qr flowing popup transition hidden">
+            <img src="../static/images/wechat.jpg"  th:src="@{/images/wechat.jpg}" alt="" class="ui rounded image" style="width: 110px">
+          </div>
+          </div>
+      </div>
+
+    </div>
+  </div>
+
+  <br>
+  <br>
+  <!--底部footer-->
+  <footer class="ui inverted vertical segment m-padded-tb-massive m-opacity" th:replace="_fragments :: footer">
+    <div class="ui center aligned container">
+      <div class="ui inverted divided stackable grid">
+        <div class="three wide column">
+          <div class="ui inverted link list">
+            <div class="item">
+              <img src="../static/images/wechat.jpg"   class="ui rounded image" alt="" style="width: 110px">
+            </div>
+          </div>
+        </div>
+        <div class="four wide column">
+          <h4 class="ui inverted header m-text-thin m-text-spaced ">联系我</h4>
+          <div class="ui inverted link list">
+            <p  class="item m-text-thin">Email：RyanYang221@Gmail.com</p>
+          </div>
+        </div>
+
+        <div class="five wide column">
+          <h4 class="ui inverted header m-text-thin m-text-spaced ">友链</h4>
+          <a href="https://semantic-ui.com/"  class="item m-text-thin">https://semantic-ui.com/</a><br>
+          <a href="https://onestar.newstar.net.cn/"  class="item m-text-thin">https://onestar.newstar.net.cn/</a><br>
+          <a href="http://www.apenixx.top/"  class="item m-text-thin">http://www.apenixx.top/</a><br>
+
+        </div>
+
+
+        <div class="four wide column">
+          <h4 class="ui inverted header m-text-thin m-text-spaced ">Ryan's Blog</h4>
+          <p class="m-text-thin m-text-spaced m-opacity-mini"  >less is more</p>
+        </div>
+
+
+      </div>
+      <div class="ui inverted section divider"></div>
+      <p class="m-text-thin m-text-spaced m-opacity-tiny" >Copyright © 2020 - 2021 Ryan Designed by Ryan</p>
+    </div>
+
+  </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+
+  <script>
+    $('.menu.toggle').click(function () {
+      $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+    $('.wechat').popup({
+      popup : $('.wechat-qr'),
+      position: 'bottom center'
+    });
+    $('.qq').popup();
+
+  </script>
+</body>
+</html>

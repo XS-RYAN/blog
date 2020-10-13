@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Ryan.Blog.mapper.CommentMapper">
+    <insert id="saveComment" parameterType="comment" >
+        insert into t_comment values(null,#{nickname}, #{email}, #{content}, #{avatar}, #{createTime}, #{blogId}, #{parentCommentId},#{adminComment})
+    </insert>
+
+    <select id="findByBlogId" parameterType="Long" resultType="comment">
+        select * from t_comment where blogId = #{id} ORDER BY createTime DESC
+    </select>
+
+    <select id="findByParentCommentId" parameterType="Integer" resultType="comment">
+        select * from t_comment where parentCommentId = #{id}
+    </select>
+
+
+    <select id="findById" parameterType="Integer" resultType="comment">
+        select * from t_comment where id = #{id}
+    </select>
+
+    <select id="findAllCommentId" resultType="Integer" parameterType="Long">
+        SELECT parentCommentId from t_comment where parentCommentId != -1 and blogId = #{id}
+    </select>
+
+
+
+</mapper>

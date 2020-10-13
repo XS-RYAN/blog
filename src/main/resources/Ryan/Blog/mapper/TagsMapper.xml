@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Ryan.Blog.mapper.TagMapper">
+    
+    <resultMap id="tagAndBlog" type="tag">
+        <id property="id" column="tid"/>
+        <result property="name" column="name"/>
+        <collection property="blogs" ofType="blog">
+            <id property="id" column="id"/>
+            <result property="title" column="title"/>
+            <result property="content" column="content"/>
+            <result property="firstPicture" column="firstPicture"/>
+            <result property="flag" column="flag"/>
+            <result property="views" column="views"/>
+            <result property="appreciation" column="appreciation"/>
+            <result property="shareStatement" column="shareStatement"/>
+            <result property="commentAble" column="commentAble"/>
+            <result property="published" column="published"/>
+            <result property="recommend" column="recommend"/>
+            <result property="create_time" column="create_time"/>
+            <result property="update_time" column="update_time"/>
+            <result property="typeId" column="typeId"/>
+            <result property="userId" column="userId"/>
+            <result property="tagIds" column="tagIds"/>
+            <result property="description" column="description"/>
+        </collection>
+    </resultMap>
+    
+  <select id="findAllTagAndBlog" resultMap="tagAndBlog">
+      SELECT t_blog.*,t_tag.id as tid,t_tag.name FROM (t_tag LEFT JOIN t_blog_tags ON t_tag.`id` = t_blog_tags.`tag_id`) LEFT JOIN t_blog
+      ON t_blog.`id` = t_blog_tags.`blog_id`
+  </select>
+
+
+
+</mapper>

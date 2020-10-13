@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Ryan.Blog.mapper.BlogMapper">
+
+    <select id="findAll" resultType="blog">
+        select * from t_blog
+    </select>
+
+    <select id="findByCondition" resultType="blog" parameterType="blog">
+        select title, typeId, recommend, create_time, update_time, published
+        from t_blog
+        <where>
+            <if test="title != null and title != ''">
+                title like #{title}
+            </if>
+            <if test="typeId != null and typeId != ''">
+                and typeId = #{typeId}
+            </if>
+            <if test="recommend != null">
+                and recommend = #{recommend}
+            </if>
+        </where>
+
+    </select>
+
+    <insert id="saveBlog" parameterType="blog">
+        <selectKey keyColumn="id" keyProperty="id" order="AFTER" resultType="Long">
+            select last_insert_id()
+        </selectKey>
+        insert into t_blog(flag,title,typeId,tagIds,firstPicture,recommend,shareStatement,appreciation,commentAble,content,userId,create_time,views,description,published)
+        values(#{flag},#{title},#{typeId},#{tagIds},#{firstPicture},#{recommend},#{shareStatement},#{appreciation},#{commentAble},#{content},#{userId},#{create_time},#{views},#{description},#{published})
+    </insert>
+
+    <insert id="saveBlogAndTag" parameterType="BlogAndTag">
+        insert into t_blog_tags values(null,#{tag_id},#{blog_id})
+    </insert>
+
+    <resultMap id="blogAndUser" type="blog">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="firstPicture" column="firstPicture"/>
+        <result property="flag" column="flag"/>
+        <result property="views" column="views"/>
+        <result property="appreciation" column="appreciation"/>
+        <result property="shareStatement" column="shareStatement"/>
+        <result property="commentAble" column="commentAble"/>
+        <result property="published" column="published"/>
+        <result property="recommend" column="recommend"/>
+        <result property="create_time" column="create_time"/>
+        <result property="update_time" column="update_time"/>
+        <result property="typeId" column="typeId"/>
+        <result property="userId" column="userId"/>
+        <result property="tagIds" column="tagIds"/>
+        <result property="description" column="description"/>
+        <association property="user" javaType="user">
+            <result property="nickname" column="nickname"/>
+        </association>
+    </resultMap>
+
+    <select id="findOneById" resultMap="blogAndUser" parameterType="Long">
+        SELECT b.*, u.nickname FROM t_blog AS b,t_user AS u WHERE b.id = #{id} AND b.userId = u.id
+    </select>
+
+    <update id="updateBlog" parameterType="blog">
+        update t_blog set flag = #{flag},title = #{title}, content = #{content}, typeId = #{typeId}, tagIds = #{tagIds}, firstPicture = #{firstPicture},
+        appreciation = #{appreciation}, shareStatement = #{shareStatement}, commentAble = #{commentAble}, recommend = #{recommend}, update_time = #{update_time},
+        description = #{description}, published = #{published} where id = #{id}
+    </update>
+
+    <insert id="removeBlogAndTag" parameterType="BlogAndTag">
+        delete from t_blog_tags where blog_id = #{blog_id}
+    </insert>
+
+    <select id="findByTypeId" resultType="blog" parameterType="int">
+        select * from t_blog  where typeId = #{id}
+    </select>
+
+    <select id="findLikeTitle" resultType="blog" parameterType="String">
+        select * from t_blog where title like #{title}
+    </select>
+
+    <resultMap id="showBlog" type="blog">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="firstPicture" column="firstPicture"/>
+        <result property="flag" column="flag"/>
+        <result property="views" column="views"/>
+        <result property="appreciation" column="appreciation"/>
+        <result property="shareStatement" column="shareStatement"/>
+        <result property="commentAble" column="commentAble"/>
+        <result property="published" column="published"/>
+        <result property="recommend" column="recommend"/>
+        <result property="create_time" column="create_time"/>
+        <result property="update_time" column="update_time"/>
+        <result property="typeId" column="typeId"/>
+        <result property="userId" column="userId"/>
+        <result property="tagIds" column="tagIds"/>
+        <result property="description" column="description"/>
+        <association property="type" javaType="type">
+            <id property="id" column="tid"/>
+            <result property="name" column="name"/>
+        </association>
+        <association property="user" javaType="user">
+            <result property="nickname" column="nickname"/>
+            <result property="avatar" column="avatar"/>
+        </association>
+
+    </resultMap>
+
+    <select id="showBlogs" resultMap="showBlog">
+        SELECT b.*,t.id AS tid,t.name ,u.nickname,u.avatar FROM t_blog AS b,t_type AS t, t_user AS u WHERE b.typeId = t.id AND b.published = 1 AND b.userId = u.id ORDER BY create_time DESC
+    </select>
+
+
+
+    <update id="updateViews" parameterType="Long">
+        update t_blog set views = #{views} where id = #{id}
+    </update>
+
+    <resultMap id="BlogAndUser" type="blog">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="firstPicture" column="firstPicture"/>
+        <result property="flag" column="flag"/>
+        <result property="views" column="views"/>
+        <result property="appreciation" column="appreciation"/>
+        <result property="shareStatement" column="shareStatement"/>
+        <result property="commentAble" column="commentAble"/>
+        <result property="published" column="published"/>
+        <result property="recommend" column="recommend"/>
+        <result property="create_time" column="create_time"/>
+        <result property="update_time" column="update_time"/>
+        <result property="typeId" column="typeId"/>
+        <result property="userId" column="userId"/>
+        <result property="tagIds" column="tagIds"/>
+        <result property="description" column="description"/>
+        <association property="user" javaType="user">
+            <result property="nickname" column="nickname"/>
+            <result property="avatar" column="avatar"/>
+        </association>
+        <association property="type" javaType="type">
+            <id property="id" column="tid"/>
+            <result property="name" column="name"/>
+        </association>
+
+    </resultMap>
+    <select id="findBlogAndUserByTypeId" resultMap="BlogAndUser" parameterType="int">
+        SELECT b.*,t.id AS tid,t.name ,u.nickname,u.avatar FROM t_blog AS b,t_type AS t, t_user AS u WHERE b.typeId = t.id AND b.published = 1 AND b.userId = u.id AND b.typeId = #{id}
+    </select>
+
+    <resultMap id="blogAndTypeAndTagAndUser" type="tag">
+        <id property="id" column="tagId"/>
+        <result property="name" column="tagname"/>
+        <collection property="blogs" ofType="blog">
+            <id property="id" column="id"/>
+            <result property="title" column="title"/>
+            <result property="content" column="content"/>
+            <result property="firstPicture" column="firstPicture"/>
+            <result property="flag" column="flag"/>
+            <result property="views" column="views"/>
+            <result property="appreciation" column="appreciation"/>
+            <result property="shareStatement" column="shareStatement"/>
+            <result property="commentAble" column="commentAble"/>
+            <result property="published" column="published"/>
+            <result property="recommend" column="recommend"/>
+            <result property="create_time" column="create_time"/>
+            <result property="update_time" column="update_time"/>
+            <result property="typeId" column="typeId"/>
+            <result property="userId" column="userId"/>
+            <result property="tagIds" column="tagIds"/>
+            <result property="description" column="description"/>
+            <association property="type" javaType="type">
+                <id property="id" column="typeId"/>
+                <result property="name" column="typeName"/>
+            </association>
+            <association property="user" javaType="user">
+                <id property="id" column="userId"/>
+                <result property="nickname" column="nickname"/>
+                <result property="avatar" column="avatar"/>
+            </association>
+        </collection>
+    </resultMap>
+
+    <select id="blogAndTypeAndTagAndUser" resultMap="blogAndTypeAndTagAndUser" parameterType="Integer">
+        SELECT b.*, t.`id` AS tagId,t.`name` AS tagname,ty.name AS typename,u.`nickname`,u.`avatar`
+FROM t_blog AS b, t_tag AS t, t_blog_tags AS bt,t_type AS ty,t_user AS u
+WHERE b.`id` = bt.blog_id AND t.`id` = bt.tag_id AND t.id = #{id} AND ty.id = b.`typeId` AND u.`id` = b.`userId` AND b.published = 1
+    </select>
+
+
+    <select id="recommendBlog" resultType="blog">
+        select title,id  from t_blog  where recommend = 1 and published = 1 ORDER BY create_time DESC limit 5;
+    </select>
+
+
+
+
+
+
+</mapper>

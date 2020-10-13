@@ -1,0 +1,38 @@
+#jdbc:
+#  driverClassName: com.mysql.cj.jdbc.Driver
+#  url: jdbc:mysql://localhost:3306/yang?timezoneService=Asia/Shanghai
+#  username: root
+#  password: root
+
+server:
+  port: 8080
+
+
+spring:
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://49.234.95.180:3306/m_blog?timezoneService=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8
+#    url: jdbc:mysql://localhost:3306/m_blog?timezoneService=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: root
+
+  mvc:
+    view:
+      suffix: .html
+
+  thymeleaf:
+    cache: false
+
+
+logging:
+  level:
+    com.Ryan.Blog: debug
+    org.springframework: info
+mybatis:
+      type-aliases-package: com.Ryan.Blog.pojo
+      mapper-locations: classpath:Ryan/Blog/mapper/*.xml
+      configuration:
+        log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#          map-underscore-to-camel-case: true
