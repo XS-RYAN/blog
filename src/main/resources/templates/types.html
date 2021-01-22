@@ -39,27 +39,28 @@
   <div  class="m-container-small m-padded-tb-big">
     <div class="ui container">
       <!--header-->
-      <div class="ui top attached segment">
+      <div class="ui top attached segment inverted">
         <div class="ui middle aligned two column grid">
           <div class="column">
-            <h3 class="ui teal header">分类</h3>
+            <h3 class="ui brown header">分类</h3>
           </div>
           <div class="right aligned column">
-            共 <h2 class="ui orange header m-inline-block m-text-thin" th:text="${types.size()}"> 14 </h2> 个
+            共 <h2 class="ui brown header m-inline-block m-text-thin" th:text="${types.size()}"> 14 </h2> 个
           </div>
         </div>
       </div>
 
-      <div class="ui attached segment m-padded-tb-large">
-        <div class="ui labeled button m-margin-tb-tiny" th:each="type:${types}">
-          <a href="#" th:href="@{/types(typeId = ${type.id})}" class="ui  button" th:text="${type.name}" th:classappend="${type.id == typeId} ? 'grey'">思考与感悟</a>
-          <div class="ui basic   left pointing label" th:text="${type.blogs.size()}">24</div>
+      <div class="ui attached segment m-padded-tb-large inverted">
+
+        <div class="ui labeled button m-margin-tb-tiny "  th:each="type:${types}">
+          <a href="#" style="background: #8FBC8F"  th:href="@{/types(typeId = ${type.id})}" class="ui  button" th:text="${type.name}" th:classappend="${type.id == typeId} ? 'grey'">思考与感悟</a>
+          <div style="background:#8FBC8F " class="ui basic   left pointing label" th:text="${type.blogs.size()}">24</div>
         </div>
 
       </div>
 
-      <div class="ui top attached teal segment">
-        <div class="ui padded vertical segment m-padded-tb-large m-mobile-lr-clear" th:each="blog:${blogs}" >
+      <div class="ui top attached inverted segment">
+        <div class="ui padded vertical segment m-padded-tb-large m-mobile-lr-clear" style="border-bottom-color: pink" th:each="blog:${blogs}" >
           <div class="ui mobile reversed stackable grid">
             <div class="eleven wide column">
               <h3 class="ui header" ><a href="#" th:href="@{/blog/{id}/show(id = ${blog.id})}" class="m-black" th:text="${blog.title}" >你真的理解什么是财富自由吗？</a></h3>
@@ -70,18 +71,18 @@
                   <div class="ui mini horizontal link list">
                     <div class="item">
                       <img src="../static/images/profilePhoto.jpg" th:src="${blog.user.avatar}" alt="" class="ui avatar image">
-                      <div class="content"><a href="#" class="header" th:text="${blog.user.nickname}" th:href="@{/about}">Ryan</a></div>
+                      <div class="content"><a href="#" class="m-textX"  th:href="@{/about}">Ryan</a></div>
                     </div>
-                    <div class="item">
-                      <i class="calendar icon"></i><span th:text="${#dates.format(blog.getCreate_time(),'yyyy-MM-dd')}">2020-08-10</span>
+                    <div class="item inverted" >
+                      <i class="calendar icon inverted"></i> <span class="m-textY" th:text="${#dates.format(blog.getCreate_time(),'yyyy-MM-dd')}">1990-01-01</span>
                     </div>
-                    <div class="item">
-                      <i class="eye icon"></i><span th:text="${blog.views}">1898</span>
+                    <div class="item " >
+                      <i class="eye icon inverted "></i><span class="m-textY" th:text="${blog.views}">100</span>
                     </div>
                   </div>
                 </div>
                 <div class="right aligned five wide column">
-                  <a href="#"  class="ui teal basic label m-padded-tiny m-text-thin" th:text="${blog.type.name}">认知升级</a>
+                  <a href="#" style="background: #8FBC8F"  class="ui m-text-thin inverted label m-padded-tiny " th:text="${blog.type.name}">认知升级</a>
                 </div>
               </div>
             </div>
@@ -95,15 +96,16 @@
           </div>
         </div>
 
+
       </div>
 
-      <div class="ui bottom attached segment" th:if="${pageInfo.pages} > 1">
+      <div class="ui bottom attached segment inverted" th:if="${pageInfo.pages} > 1">
         <div class="ui middle aligned two column grid">
           <div class="column">
-            <a href="#" class="ui mini teal basic button" th:href="@{/types(pageNum = ${pageInfo.isHasPreviousPage()} ? ${pageInfo.prePage} : 1,typeId = ${typeId})}" th:classappend="${pageInfo.isFirstPage} ? 'disabled'">上一页</a>
+            <a href="#" class="ui mini brown   button" th:href="@{/types(pageNum = ${pageInfo.isHasPreviousPage()} ? ${pageInfo.prePage} : 1,typeId = ${typeId})}" th:classappend="${pageInfo.isFirstPage} ? 'disabled'">上一页</a>
           </div>
           <div class="right aligned column">
-            <a href="#" class="ui mini teal basic button" th:href="@{/types(pageNum = ${pageInfo.isHasNextPage()} ? ${pageInfo.nextPage} : ${pageInfo.pages},typeId = ${typeId})}"  th:classappend="${pageInfo.isLastPage} ? 'disabled'">下一页</a>
+            <a href="#" class="ui mini brown   button" th:href="@{/types(pageNum = ${pageInfo.isHasNextPage()} ? ${pageInfo.nextPage} : ${pageInfo.pages},typeId = ${typeId})}"  th:classappend="${pageInfo.isLastPage} ? 'disabled'">下一页</a>
           </div>
         </div>
       </div>

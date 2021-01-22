@@ -38,26 +38,26 @@
   <div  class="m-container-small m-padded-tb-big">
     <div class="ui container">
       <!--header-->
-      <div class="ui top attached padded segment">
-        <div class="ui middle aligned two column grid">
+      <div class="ui top attached padded segment inverted">
+        <div class="ui middle aligned two column grid ">
           <div class="column">
-            <h3 class="ui teal header">归档</h3>
+            <h3 class="ui  header " style="color: #CD5C5C">归档</h3>
           </div>
           <div class="right aligned column">
-            共 <h2 class="ui orange header m-inline-block m-text-thin" th:text="${count}"> 114 </h2> 篇博客
+            共 <h2 class="ui  header m-inline-block " th:text="${count}" style="color: #CD5C5C">114 </h2> 篇博客
           </div>
         </div>
       </div>
 
       <div th:each="item :${map}">
-      <h3 class="ui center aligned header" th:text="${item.key}" style="margin-top: 20px">2017</h3>
-      <div class="ui fluid vertical menu" >
+      <h3 class="ui center aligned header m-textW" th:text="${item.key}" style="margin-top: 20px">2017</h3>
+      <div class="ui fluid vertical menu inverted" >
         <a href="#"  class="item" th:each="blog:${item.value}" th:href="@{/blog/{id}/show(id = ${blog.id})}">
           <span>
-            <i class="mini teal circle icon"></i><span th:text="${blog.title}">关于刻意练习的清单</span>
-            <div class="ui teal basic left pointing label m-padded-mini " th:text="${#dates.format(blog.create_time,'MMMdd')}">9月03</div>
+            <i class="mini circle icon" style="color: #FFB6C1"></i><span th:text="${blog.title}" style="color: #F5F5DC">关于刻意练习的清单</span>
+            <div class="ui  left pointing label m-padded-mini inverted m-text-thin " style="background: #8FBC8F " th:text="${#dates.format(blog.create_time,'MMMdd')}">9月03</div>
           </span>
-          <div class="ui orange basic left pointing label m-padded-mini " th:text="${blog.flag}">原创</div>
+          <div class="ui left pointing label m-padded-mini m-text-thin inverted" style="background: #D2B48C" th:text="${blog.flag}">原创</div>
         </a>
 
       </div>

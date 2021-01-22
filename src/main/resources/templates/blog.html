@@ -13,6 +13,13 @@
   <link rel="stylesheet" href="../static/css/me.css">
   <link rel="shortcut icon" href="../static/ico/favicon.ico"/>
   <link rel="bookmark" href="../static/ico/favicon.ico"/>
+
+  <style>
+    h1{
+      color: red;
+    }
+  </style>
+
 </head>
 <body>
 
@@ -34,42 +41,114 @@
   </nav>
 
   <!--中间内容-->
-  <div id="waypoint" class="m-container-small m-padded-tb-big animated fadeIn">
-    <div class="ui container">
-      <div class="ui top attached segment">
-        <div class="ui horizontal link list">
+  <div id="waypoint" class="m-container-small m-padded-tb-big animated fadeIn ">
+    <div class="ui container ">
+      <div class="ui top attached segment inverted ">
+        <div class="ui horizontal link list ">
           <div class="item">
-            <img src="../static/images/profilePhoto.jpg" th:src="@{/images/profilePhoto.jpg}" alt="" class="ui avatar image">
-            <div class="content"><a href="#" class="header">Ryan</a></div>
+            <img src="../static/images/profilePhoto.jpg" th:src="@{/static/images/profilePhoto.jpg}" alt="" class="ui avatar image">
+            <div class="content"><a href="#" class="m-textX">Ryan</a></div>
           </div>
           <div class="item">
-            <i class="calendar icon" style="margin-top: -3px"></i> <span th:text="${#dates.format(blog.getCreate_time(),'yyyy-MM-dd')}"></span>
+            <i class="calendar icon inverted" style="margin-top: -3px"></i> <span class="m-textY" th:text="${#dates.format(blog.getCreate_time(),'yyyy-MM-dd')}">1990-01-01</span>
           </div>
           <div class="item">
-            <i class="eye icon" style="margin-top: -3px"></i> <span th:text="${blog.views}">2342</span>
+            <i class="eye icon inverted" style="margin-top: -3px"></i> <span class="m-textY" th:text="${blog.views}">2342</span>
           </div>
         </div>
       </div>
-      <div class="ui attached segment">
+      <div class="ui attached segment inverted">
         <!--图片区域-->
         <img src="../static/images/TopPhoto.jpg" th:src="${blog.firstPicture}" alt="" class="ui fluid rounded image">
       </div>
-      <div class="ui  attached padded segment">
+      <div class="ui  attached padded segment inverted" >
         <!--内容-->
         <div class="ui right aligned basic segment">
-          <div class="ui blue  label" th:text="${blog.flag}">原创</div>
+          <div class="ui label" style="background: #D2B48C" th:text="${blog.flag}">原创</div>
         </div>
 
-        <h2 class="ui center aligned header" th:text="${blog.title}">关于刻意练习的清单</h2>
+        <h2 class="ui center aligned header m-black" th:text="${blog.title}">关于刻意练习的清单</h2>
         <br>
 
-        <div id="content" class="typo  typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large" th:utext="${blog.content}">
+        <div id="content" class="typo typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large m-text" th:utext="${blog.content}">
 
+          <h1>hello world</h1>
+          <h2>hello world</h2>
+          <h3>hello world</h3>
+          <h4>hello world</h4>
+          <h5>hello world</h5>
+
+          本文结构如下：
+
+          作者和开发原由
+          Git 的数据模型
+          常用命令
+          资源推荐
+          作者和开发原由
+          Talk is cheap. Show me the code. 这句话就出自 Linux 和 Git 的作者 Linus Torvalds。
+
+          原本 Linux 内核的版本控制系统是用的 BitKeeper，然而 2005 年，BitMover 公司不再让 Linux 开发团队免费使用了。。
+
+          Linus 一听，不给用了？老子自己写！
+
+          于是，大佬十天之内完成了 Git 的第一个版本。
+
+          所以 Git 是一个免费的、开源的版本控制系统。
+
+          版本控制系统
+          版本控制其实每个人都用过，那些年修改过的简历：
+
+          小齐简历 2012 版 小齐简历 2013 版 小齐简历 2014 版 小齐简历 2015 版 小齐简历 2016 版 小齐简历 2017 版 小齐简历 2018 版 小齐简历 2019 版 ... 还有那些年打死都不再改的毕业论文：
+
+          毕业论文最终版 毕业论文最最终版 毕业论文最最最终版 毕业论文最最最最终版 毕业论文最终不改版 毕业论文最终真不改版 毕业论文最终真真不改版 毕业论文最终打死不改版 毕业论文最终打死不改版 2 ... 没错，这就是本地版本控制系统。
+
+          很明显，好处是简单，但是只能一个人在这改，无法和他人完成合作。那么以下两种主流的版本控制系统应运而生。
+
+          1. 集中化版本控制系统
+          Centralized Version Control Systems (CVCS)
+
+          比如：CVS, Subversion, Perforce, etc.
+
+          这种版本控制系统有一个单一的集中管理的服务器，保存所有文件的最新版本，大家可以通过连接到这台服务器上来获取或者提交文件。
+
+          这种模式相对本地版本控制系统是有所改进的，但是缺点也很明显，如果服务器宕机，那么轻则耽误工作、重则数据丢失。于是分布式版本控制系统应运而生。
+
+          2. 分布式版本控制系统
+          Distributed Version Control Systems (DVCS)
+
+          比如：Git, Mercurial, Bazaar, etc.
+
+          分布式的版本控制系统会把代码仓库完整地镜像下来，这样任何一个服务器发生故障，都可以用其他的仓库来修复。
+
+          更进一步，这种模式可以更方便的和不同公司的人进行同一项目的开发，因为两个远程代码仓库可以交互，这在之前的集中式系统中是无法做到的。
+
+          那么什么叫“把代码仓库完整地镜像下来”呢？ CVCS 每个版本存放的是当前版本与前一个版本的差异，因此也被称作基于差异的版本控制 (delta-based)；
+
+          Git 存储的是所有文件的一个快照 (snapshot)，如果有的文件没有修改，那就只保留一个 reference 指向之前存储的文件。
+
+          不是很好理解？那接着看吧～
+
+          Git 的数据模型
+          1. 什么是快照 (snapshot) 呢？
+          首先我们来学两个 Git 中的术语：
+
+          blob, 就是单个的文件； tree, 就是一个文件夹。 快照则是被追踪的最顶层的树。
+
+          比如我的“公众号”文件夹的这么一个结构：
+
+          那么一个快照就是追踪的“公众号”这颗树。
+
+          2. 本地库的数据模型
+          Git 记录了每个快照的 parent，也就是当前这个文件夹的上一个版本。
+
+          那么快照的迭代更新的过程就可以表示为一个有向无环图，是不是很熟悉？我们在「拓扑」那篇文章里讲过，忘了的小伙伴快去公众号内回复「拓扑」获取拓扑的入门文章吧～
+
+          每个快照其实都对应了一次 commit，我们用代码来表示一下：
         </div>
 
           <!--标签-->
           <div class="m-padded-lr-responsive">
-            <div class="ui label m-margin-tb-tiny" th:each="tag:${blog.tags}"><i class="tag icon grey"></i><span th:text="${tag.name}">方法论</span></div>
+            <div class="ui label m-margin-tb-tiny" style="background: #B0C4DE" th:each="tag:${blog.tags}"><i class="tag icon grey"></i><span  th:text="${tag.name}">方法论</span></div>
 
           </div>
 
@@ -92,14 +171,14 @@
         </div> -->
 
       </div>
-      <div class="ui attached positive message" th:if="${blog.shareStatement} == 1">
+      <div class="ui  black message " th:if="${blog.shareStatement} == 1">
         <!--博客信息-->
         <div class="ui middle aligned grid" >
           <div class="eleven wide column">
             <ui class="list">
-              <li>作者：<span th:text="${blog.user.nickname}">Ryan</span> <a href="about.html" th:href="@{/about}">&nbsp(联系作者)</a></li>
-              <li >发表时间：<span th:text="${#dates.format(blog.update_time,'yyyy-MM-dd')}">2017-10-02 09:08</span></li>
-              <li>版权声明：自由转载-非商用-非衍生-保持署名（创意共享3.0许可证）</li>
+              <li class="m-text">作者：<span class="m-text" th:text="${blog.user.nickname}">Ryan</span> <a href="about.html" th:href="@{/about}">&nbsp(联系作者)</a></li>
+              <li class="m-text">发表时间：<span class="m-text" th:text="${#dates.format(blog.update_time,'yyyy-MM-dd')}">2017-10-02 09:08</span></li>
+              <li class="m-text">版权声明：自由转载-非商用-非衍生-保持署名（创意共享3.0许可证）</li>
             </ui>
           </div>
           <div class="five wide column">
@@ -109,11 +188,11 @@
       </div>
 
 
-      <div  class="ui bottom attached segment">
+      <div  class="ui bottom attached segment black inverted  ">
         <!--留言区域列表-->
-        <div id="comment-container"  class="ui teal segment">
+        <div id="comment-container"  class="ui brown segment brown inverted ">
           <div th:fragment="commentList">
-            <div class="ui threaded comments" style="max-width: 100%;">
+            <div class="ui threaded comments " style="max-width: 100%;">
               <h3 class="ui dividing header">评论</h3>
               <div class="comment" th:each="comment:${comments}">
                 <a class="avatar">
@@ -122,7 +201,7 @@
                 <div class="content">
                   <a class="author" >
                     <span th:text="${comment.nickname}">Matt</span>
-                    <div class="ui mini basic blue left  label m-padded-mini" th:if="${comment.adminComment} == 1 " >博主</div>
+                    <div class="ui mini orange basic left  label m-padded-mini" th:if="${comment.adminComment} == 1 " >博主</div>
                   </a>
                   <div class="metadata">
                     <span class="date" th:text="${#dates.format(comment.createTime,'yyyy-MM-dd hh:mm')}" >Today at 5:42PM</span>
@@ -143,8 +222,8 @@
                     <div class="content">
                       <a class="author" >
                         <span th:text="${sonComment.nickname}">小红</span>
-                        <div class="ui mini basic blue left  label m-padded-mini" th:if="${sonComment.adminComment} == 1">博主</div>
-                        &nbsp;<span  style="color: #EB7552">@</span> <span th:text="${sonComment.parentComment.nickname}" class="m-teal " style="color: #EB7552">小白</span>
+                        <div class="ui mini  orange basic left  label m-padded-mini" th:if="${sonComment.adminComment} == 1">博主</div>
+                        &nbsp;<span  style="color: #F5FFFA">@</span> <span th:text="${sonComment.parentComment.nickname}" class="m-teal " style="color: #F5FFFA">小白</span>
                       </a>
                       <div class="metadata" >
                         <span class="date" th:text="${#dates.format(sonComment.createTime,'yyyy-MM-dd hh:mm')}">Today at 5:42PM</span>
@@ -166,28 +245,28 @@
         </div>
 
         <!--评论输入区域-->
-        <div id="comment-form" class="ui form">
+        <div id="comment-form " class="ui form">
           <input type="hidden" name="blog.id" th:value="${blog.id}">
           <input type="hidden" name="parentComment.id" value="-1">
           <input type="hidden" name="avatar" id="avatar">
           <div class="field">
-            <textarea name="content" placeholder="请输入评论信息..."></textarea>
+            <textarea style="background: #F5F5DC" name="content" placeholder="请输入评论信息..."></textarea>
           </div>
           <div class="fields">
             <div class="field m-mobile-wide m-margin-bottom-small">
               <div class="ui left icon input">
                 <i class="user icon"></i>
-                <input type="text" name="nickname" placeholder="姓名" th:value="${session.user}!=null ? ${session.user.nickname}">
+                <input style="background: #F5F5DC" type="text" name="nickname" placeholder="姓名" th:value="${session.user}!=null ? ${session.user.nickname}">
               </div>
             </div>
             <div class="field m-mobile-wide m-margin-bottom-small">
               <div class="ui left icon input">
                 <i class="mail icon"></i>
-                <input type="text" name="email" placeholder="邮箱" th:value="${session.user}!=null ? ${session.user.email}">
+                <input style="background: #F5F5DC"  type="text" name="email" placeholder="邮箱" th:value="${session.user}!=null ? ${session.user.email}">
               </div>
             </div>
             <div class="field  m-margin-bottom-small m-mobile-wide">
-              <button id="commentpost-btn" type="button" class="ui teal button m-mobile-wide"><i class="edit icon"></i>发布</button>
+              <button id="commentpost-btn" type="button" class="ui button m-mobile-wide" style="background: #F5F5DC "><i class="edit icon"></i>发布</button>
             </div>
           </div>
 
@@ -274,6 +353,36 @@
 
 
   <script>
+
+    let strong = document.getElementsByTagName("strong");
+    for (let strongElement of strong) {
+      strongElement.style.color="#F5F5DC"
+    }
+
+    let h1 = document.getElementsByTagName("h1");
+    for (let h1Element of h1) {
+      h1Element.style.color="#BC8F8F";
+    }
+
+    let h2 = document.getElementsByTagName("h2");
+    for (let h2Element of h2) {
+      h2Element.style.color="#BC8F8F";
+    }
+
+    let h3 = document.getElementsByTagName("h3");
+    for (let h3Element of h3) {
+      h3Element.style.color="#BC8F8F";
+    }
+
+    let h4 = document.getElementsByTagName("h4");
+    for (let h4Element of h4) {
+      h4Element.style.color="#BC8F8F";
+    }
+
+    let h5 = document.getElementsByTagName("h5");
+    for (let h5Element of h5) {
+      h5Element.style.color="#BC8F8F";
+    }
 
     $('.menu.toggle').click(function () {
       $('.m-item').toggleClass('m-mobile-hide');

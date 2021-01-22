@@ -46,7 +46,7 @@ public class IndexController {
         List<Blog> recommendBlog = blogService.recommendBlog();
 
 
-        PageHelper.startPage(pageNum,7);
+        PageHelper.startPage(pageNum,5);
         List<Blog> blogs = blogService.showBlogs();
         PageInfo<Blog> pageInfo = new PageInfo<>(blogs);
 
