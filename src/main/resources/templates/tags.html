@@ -61,14 +61,15 @@
 
 
     <!--content-->
-      <div class="ui top attached inverted segment">
-        <div class="ui padded vertical segment m-padded-tb-large m-mobile-lr-clear" th:each="blog:${pageInfo.list}">
-          <div class="ui mobile reversed stackable grid">
+      <div class="ui top attached inverted segment" >
+        <div class="ui padded vertical segment m-padded-tb-large m-mobile-lr-clear" style="border-bottom-color: pink" th:each="blog:${pageInfo.list}">
+          <div class="ui mobile reversed stackable grid" >
             <div class="eleven wide column">
               <h3 class="ui header" ><a href="#" th:href="@{/blog/{id}/show(id = ${blog.id})}" class="m-black" th:text="${blog.title}" >你真的理解什么是财富自由吗？</a></h3>
               <p class="m-text" th:text="${blog.description}">正确做好任何一件事情的前提是清晰、正确的理解目标。而事实是，我们很多人很多时候根本没有对目标正确的定义，甚至根本从来就没有想过，只是大家都那么做而已…...</p>
               <div class="ui grid">
-                <div class="eleven wide column">
+
+                <div class="eleven wide column" >
                   <div class="ui mini horizontal link list">
                     <div class="item">
                       <img src="../static/images/profilePhoto.jpg" th:src="${blog.user.avatar}" alt="" class="ui avatar image">
@@ -86,24 +87,25 @@
                   </div>
                 </div>
 
-              <div class="right aligned five wide column">
-                <a href="#" target="_blank" class="ui label m-padded-tiny m-text-thin inverted" style="background: #8FBC8F" th:text="${blog.type.name}">认知升级</a>
-                <a href="#"  class="ui label m-padded-tiny inverted m-text-thin " style="background: #B0C4DE" th:each="tag:${blog.tags}">
+              <div class="right aligned five wide column" >
+                <div class="ui label m-padded-tiny m-text-thin inverted" style="background: #8FBC8F" th:text="${blog.type.name}">认知升级</div>
+                <div  class="ui label m-padded-tiny inverted m-text-thin " style="background: #B0C4DE" th:each="tag:${blog.tags}">
                   <i class="tag icon grey"></i>
                   <span th:text="${tag.name}">Spring</span>
-                </a>
+                </div>
               </div>
             </div>
             </div>
 
             <div class="five wide column">
               <a href="#" th:href="@{/blog/{id}/show(id = ${blog.id})}">
-                <img src="../static/images/TopPhoto.jpg" th:src="${blog.firstPicture}"  alt="" class="ui rounded image">
+                <img src="../static/images/TopPhoto.jpg" th:src="${blog.firstPicture}"  alt="" class="ui rounded image pic">
               </a>
             </div>
 
           </div>
         </div>
+
 
 
 

@@ -49,7 +49,7 @@
                 <div class="eleven wide column">
                   <div class="ui mini horizontal link list">
                     <div class="item">
-                      <img src="../static/images/profilePhoto.jpg" th:src="@{/static/images/profilePhoto.jpg}" alt="" class="ui avatar image">
+                      <img src="../static/images/profilePhoto.jpg" th:src="@{https://cdn.jsdelivr.net/gh/RYAN-CODE0/pic/avatarc572fc5ddad889a15730bd5f25d5863.jpg}" alt="" class="ui avatar image">
                       <div class="content"><a href="#" class="m-textX"  th:href="@{/about}">Ryan</a></div>
                     </div>
                     <div class="item inverted" >
@@ -61,8 +61,8 @@
                   </div>
                 </div>
                 <div class="right aligned five wide column ">
-                  <a href="#"  class="ui label m-padded-tiny m-text-thin inverted " style="background: #8FBC8F" th:text="${blog.type.name}">认知升级</a>
-                  <a href="#" class="ui label m-padded-tiny inverted m-text-thin " style="background: #B0C4DE" th:each="tag:${blog.tags}" > <i class="tag icon grey"></i><span th:text="${tag.name}">方法论</span></a>
+                  <div href="#"  class="ui label m-padded-tiny m-text-thin inverted " style="background: #8FBC8F" th:text="${blog.type.name}">认知升级</div>
+                  <div href="#" class="ui label m-padded-tiny inverted m-text-thin " style="background: #B0C4DE" th:each="tag:${blog.tags}" > <i class="tag icon grey"></i><span th:text="${tag.name}">方法论</span></div>
                 </div>
 
               </div>
@@ -70,7 +70,7 @@
 
             <div class="five wide column">
               <a href="#" th:href="@{/blog/{id}/show(id = ${blog.id})}">
-                <img src="../static/images/TopPhoto.jpg" th:src="${blog.firstPicture}" alt="" class="ui rounded image">
+                <img src="../static/images/TopPhoto.jpg" th:src="${blog.firstPicture}" alt="" class="ui rounded image pic ">
               </a>
             </div>
 

@@ -82,14 +82,14 @@
                   </div>
                 </div>
                 <div class="right aligned five wide column">
-                  <a href="#" style="background: #8FBC8F"  class="ui m-text-thin inverted label m-padded-tiny " th:text="${blog.type.name}">认知升级</a>
+                  <div href="#" style="background: #8FBC8F"  class="ui m-text-thin inverted label m-padded-tiny " th:text="${blog.type.name}">认知升级</div>
                 </div>
               </div>
             </div>
 
             <div class="five wide column">
               <a href="#" th:href="@{/blog/{id}/show(id = ${blog.id})}">
-                <img src="../static/images/TopPhoto.jpg"  th:src="${blog.firstPicture}" class="ui rounded image">
+                <img src="../static/images/TopPhoto.jpg"  th:src="${blog.firstPicture}" class="ui rounded image pic">
               </a>
             </div>
 

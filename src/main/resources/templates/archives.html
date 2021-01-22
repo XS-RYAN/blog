@@ -54,7 +54,7 @@
       <div class="ui fluid vertical menu inverted" >
         <a href="#"  class="item" th:each="blog:${item.value}" th:href="@{/blog/{id}/show(id = ${blog.id})}">
           <span>
-            <i class="mini circle icon" style="color: #FFB6C1"></i><span th:text="${blog.title}" style="color: #F5F5DC">关于刻意练习的清单</span>
+            <i class="mini circle icon" style="color: slategrey"></i> <span th:text="${blog.title}" style="color: #F5F5DC">关于刻意练习的清单</span>
             <div class="ui  left pointing label m-padded-mini inverted m-text-thin " style="background: #8FBC8F " th:text="${#dates.format(blog.create_time,'MMMdd')}">9月03</div>
           </span>
           <div class="ui left pointing label m-padded-mini m-text-thin inverted" style="background: #D2B48C" th:text="${blog.flag}">原创</div>

@@ -28,11 +28,10 @@ spring:
 
 logging:
   level:
-    com.Ryan.Blog: warn
-    org.springframework: warn
+    com.Ryan.Blog: info
+    org.springframework: info
 mybatis:
       type-aliases-package: com.Ryan.Blog.pojo
       mapper-locations: classpath:Ryan/Blog/mapper/*.xml
-#      configuration:
-#        log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-#          map-underscore-to-camel-case: true
+      configuration:
+        log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

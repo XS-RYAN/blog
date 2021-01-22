@@ -47,7 +47,7 @@
         <div class="ui horizontal link list ">
           <div class="item">
             <img src="../static/images/Vavatar.jpg"  th:src="@{https://cdn.jsdelivr.net/gh/RYAN-CODE0/pic/avatarc572fc5ddad889a15730bd5f25d5863.jpg}"   alt="" class="ui avatar image">
-            <div class="content"><a href="#" class="m-textX">Ryan</a></div>
+            <div class="content"><a href="#" th:href="@{/about}" class="m-textX">Ryan</a></div>
           </div>
           <div class="item">
             <i class="calendar icon inverted" style="margin-top: -3px"></i> <span class="m-textY" th:text="${#dates.format(blog.getCreate_time(),'yyyy-MM-dd')}">1990-01-01</span>
@@ -199,10 +199,10 @@
                   <img src="/images/Vavatar1.png" th:src="${comment.avatar}" >
                 </a>
                 <div class="content">
-                  <a class="author" >
+                  <span class="author" >
                     <span th:text="${comment.nickname}">Matt</span>
                     <div class="ui mini orange basic left  label m-padded-mini" th:if="${comment.adminComment} == 1 " >博主</div>
-                  </a>
+                  </span>
                   <div class="metadata">
                     <span class="date" th:text="${#dates.format(comment.createTime,'yyyy-MM-dd hh:mm')}" >Today at 5:42PM</span>
                   </div>
@@ -220,11 +220,11 @@
                       <img src="https://unsplash.it/100/100?image=1005" th:src="${sonComment.avatar}" >
                     </a>
                     <div class="content">
-                      <a class="author" >
+                      <span class="author" >
                         <span th:text="${sonComment.nickname}">小红</span>
                         <div class="ui mini  orange basic left  label m-padded-mini" th:if="${sonComment.adminComment} == 1">博主</div>
                         &nbsp;<span  style="color: #F5FFFA">@</span> <span th:text="${sonComment.parentComment.nickname}" class="m-teal " style="color: #F5FFFA">小白</span>
-                      </a>
+                      </span>
                       <div class="metadata" >
                         <span class="date" th:text="${#dates.format(sonComment.createTime,'yyyy-MM-dd hh:mm')}">Today at 5:42PM</span>
                       </div>

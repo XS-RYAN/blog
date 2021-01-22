@@ -12,29 +12,61 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Naccl/blog-resource/skill-style.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Naccl/blog-resource/github-badge.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Naccl/blog-resource/viewer.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+
+    <style>
+        #div1{
+            width: 300px;
+            height: 300px;
+            border: solid 1px red;
+        }
+
+        #div2{
+            width: 150px;
+            height: 150px;
+            border: solid 1px red;
+            margin: 0 auto;
+            position: relative;
+            top: 25%;
+        }
+
+
+        
+    </style>
 
 
 </head>
 
 <body >
 
-<div>
-    <h3 >hello world</h3>
-    <h3>nihao</h3>
-    <h3>
-        <strong>hello </strong>
-    </h3>
-</div>
+
+
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+            <div class="aplayer" data-theme="darkgrey" data-mini="true"
+                 data-mode="circulation" data-server="netease" data-type="playlist" data-id="2921724337" data-volume="0.7"></div>
+            <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+
+
+
+<script>
+    const ap = new APlayer({
+        container: document.getElementById('player'),
+        fixed: true,
+        audio: [{
+            name: 'name',
+            artist: 'artist',
+            url: 'url.mp3',
+            cover: 'cover.jpg',
+        }]
+    });
+</script>
+
 
 </body>
 
-<script>
-    let h3 = document.getElementsByTagName("h3");
-    for (let h3Element of h3) {
-        h3Element.style.color="red"
-    }
-</script>
+
 
 
 </html>

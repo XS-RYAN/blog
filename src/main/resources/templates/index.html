@@ -13,7 +13,7 @@
 
 
 </head>
-<body>
+<body >
 
 
   <!--导航-->
@@ -84,15 +84,15 @@
                     </div>
                   </div>
                   <div class="right aligned five wide column ">
-                    <a href="#"  class="ui label m-padded-tiny m-text-thin inverted " style="background: #8FBC8F" th:text="${blog.type.name}">认知升级</a>
+                    <div  class="ui label m-padded-tiny m-text-thin inverted " style="background: #8FBC8F" th:text="${blog.type.name}">认知升级</div>
                   </div>
                 </div>
               </div>
 
-              <div class="five wide column">
-                <a href="#"  th:href="@{/blog/{id}/show(id = ${blog.id})}">
-                  <img src="../static/images/TopPhoto.jpg" th:src="${blog.firstPicture}" class="ui rounded image">
-                </a>
+              <div class="five wide column " >
+                  <a href="#"   th:href="@{/blog/{id}/show(id = ${blog.id})}">
+                    <img src="../static/images/TopPhoto.jpg" th:src="${blog.firstPicture}" class="ui around image pic">
+                  </a>
               </div>
 
             </div>
@@ -158,7 +158,7 @@
             </div>
           </div>
           <div class="ui  attached segment inverted ">
-            <a href="#"  class="ui label m-margin-tb-tiny " style="background: #B0C4DE" th:each="tag:${tags}"  >
+            <a href="#"  class="ui label m-margin-tb-tiny " style="background: #B0C4DE" th:each="tag:${tags}"  th:href="@{/tags(tagId = ${tag.id})}" >
               <i class="tag icon grey"></i>
               <span th:text="${tag.name}">Spring</span>
             </a>
@@ -177,12 +177,12 @@
           </div>
 
           <div class="ui  attached segment inverted ">
-            <div class="ui fluid vertical menu inverted" >
+            <div class="ui fluid vertical menu " style="background: #CDC9C9" >
 
-              <div class="ui  segment " style="background:white ">
+              <div class="ui  segment " style="background: #CDC9C9" >
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
-                <div class="aplayer aplayer-withlrc aplayer-withlist aplayer-arrow" data-theme="#25CCF7"
-                     data-mode="circulation" data-server="netease" data-type="playlist" data-id="2921724337" data-volume="0.7"></div>
+                <div class="aplayer  "  style="background: #CDC9C9" data-theme="#9BCD9B"
+                     data-mode="circulation" data-server="netease" data-type="playlist" data-id="2921724337" data-volume="0.7" fixed="true"></div>
                 <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
               </div>
