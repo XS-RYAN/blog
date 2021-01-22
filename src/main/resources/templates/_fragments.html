@@ -19,7 +19,7 @@
 <nav class="ui inverted attached segment m-padded-tb-mini m-shadow-small"  th:fragment="menu(n)">
     <div class="ui container">
         <div class="ui inverted secondary stackable menu">
-            <h2 class="ui yellow header item">Ryan</h2>
+            <h2 class="ui yellow header item">Ryan's Blog</h2>
             <a href="#" class=" m-item item m-mobile-hide" th:href="@{/}" th:classappend="${n == 1} ? 'active'"><i class=" home icon" ></i>首页</a>
             <a href="#" class="m-item item m-mobile-hide" th:href="@{/types}" th:classappend="${n == 2} ? 'active'"><i class=" idea icon"></i>分类</a>
             <a href="#" class="m-item item m-mobile-hide" th:href="@{/tags}" th:classappend="${n == 3} ? 'active'"><i class=" tags icon"></i>标签</a>
