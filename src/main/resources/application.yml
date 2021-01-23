@@ -33,5 +33,5 @@ logging:
 mybatis:
       type-aliases-package: com.Ryan.Blog.pojo
       mapper-locations: classpath:Ryan/Blog/mapper/*.xml
-      configuration:
-        log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#      configuration:
+#        log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
