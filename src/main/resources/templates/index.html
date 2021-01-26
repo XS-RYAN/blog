@@ -84,7 +84,7 @@
                     </div>
                   </div>
                   <div class="right aligned five wide column ">
-                    <div  class="ui label m-padded-tiny m-text-thin inverted " style="background: #8FBC8F" th:text="${blog.type.name}">认知升级</div>
+                    <div  class="ui label m-padded-tiny m-text-ryan" style="background: #8FBC8F" th:text="${blog.type.name}">认知升级</div>
                   </div>
                 </div>
               </div>
@@ -129,9 +129,6 @@
               <div class="column ">
                 <i class="idea icon brown"></i><a class="m-textZ header" style="font-weight: bold ">分类</a>
               </div>
-              <div class="right aligned column ">
-                <a href="#" class="m-textZ"  th:href="@{/types}" ><i class="angle double right icon " ></i></a>
-              </div>
             </div>
           </div>
 
@@ -139,8 +136,8 @@
             <div class="ui fluid vertical menu inverted" style="background: #8FBC8F " >
 
               <a href="#" th:href="@{/types(typeId = ${type.id})}" class="item"  th:each="type:${types}" style="border-bottom: solid 1px black">
-              <span th:text="${type.name}">学习日志</span>
-              <div class="ui large label" style="background: #8FBC8F" th:text="${type.blogs.size()}">13</div>
+              <span th:text="${type.name}" class="m-text-ryan">学习日志</span>
+              <div class="ui large label m-text-ryan" style="background: #8FBC8F" th:text="${type.blogs.size()}">13</div>
               </a>
 
             </div>
@@ -151,9 +148,6 @@
             <div class="ui middle  aligned two column grid ">
               <div class="column">
                 <i class="tags icon brown"></i><a class="m-textZ header" style="font-weight: bold ">标签</a>
-              </div>
-              <div class="right aligned column">
-                <a href="#" th:href="@{/tags}"><i class="angle double right icon brown"></i></a>
               </div>
             </div>
           </div>
@@ -224,7 +218,9 @@
           <div class="ui  attached segment inverted ">
 
             <div class="ui fluid vertical menu inverted" style="background:#BC8F8F">
-              <a href="#"  class="item" th:each="reBlog:${recommendBlog}" th:text="${reBlog.title}"  th:href="@{/blog/{id}/show(id = ${reBlog.id})}"  style="border-bottom: 1px solid black" >用户故事（User Story）</a>
+              <a href="#"  class="item m-text-ryan" th:each="reBlog:${recommendBlog}" th:text="${reBlog.title}"  th:href="@{/blog/{id}/show(id = ${reBlog.id})}"  style="border-bottom: 1px solid black" >
+                用户故事（User Story）
+              </a>
 
 
             </div>

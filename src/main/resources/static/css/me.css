@@ -102,6 +102,12 @@ body {
     font-weight: 300 !important;
     color: black !important;
 }
+
+.m-text-ryan {
+    font-weight: bold !important;
+    color: #363636 !important;
+    font-family: 等线;
+}
 .m-text-spaced {
     letter-spacing: 1px !important;
 }

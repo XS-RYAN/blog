@@ -51,7 +51,7 @@
 
       <!--tags-->
       <div class="ui attached segment m-padded-tb-large inverted">
-          <a href="#"  class="ui label m-margin-tb-tiny" style="background: #B0C4DE" th:href="@{/tags(tagId = ${tag.id})}" th:each="tag:${tags}" th:classappend="${tag.id == tagId} ? 'grey'">
+          <a href="#"  class="ui label m-margin-tb-tiny" style="background: #B0C4DE" th:href="@{/tags(tagId = ${tag.id})}" th:each="tag:${tags}" th:classappend="${tag.id == tagId} ? 'inverted'">
             <i class="tag icon grey"></i>
             <span th:text="${tag.name}">方法论</span> <div class="detail" th:text="${tag.blogs.size()}">23</div>
           </a>
@@ -88,10 +88,10 @@
                 </div>
 
               <div class="right aligned five wide column" >
-                <div class="ui label m-padded-tiny m-text-thin inverted" style="background: #8FBC8F" th:text="${blog.type.name}">认知升级</div>
-                <div  class="ui label m-padded-tiny inverted m-text-thin " style="background: #B0C4DE" th:each="tag:${blog.tags}">
+                <div class="ui label m-padded-tiny m-text-ryan" style="background: #8FBC8F" th:text="${blog.type.name}">认知升级</div>
+                <div  class="ui label m-padded-tiny  " style="background: #B0C4DE" th:each="tag:${blog.tags}">
                   <i class="tag icon grey"></i>
-                  <span th:text="${tag.name}">Spring</span>
+                  <span th:text="${tag.name}" class="m-text-ryan">Spring</span>
                 </div>
               </div>
             </div>
