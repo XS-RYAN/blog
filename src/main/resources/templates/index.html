@@ -218,7 +218,7 @@
           <div class="ui  attached segment inverted ">
 
             <div class="ui fluid vertical menu inverted" style="background:#BC8F8F">
-              <a href="#"  class="item m-text-ryan" th:each="reBlog:${recommendBlog}" th:text="${reBlog.title}"  th:href="@{/blog/{id}/show(id = ${reBlog.id})}"  style="border-bottom: 1px solid black" >
+              <a href="#"  class="item m-text-ryan inverted" th:each="reBlog:${recommendBlog}" th:text="${reBlog.title}"  th:href="@{/blog/{id}/show(id = ${reBlog.id})}"  style="border-bottom: 1px solid black" >
                 用户故事（User Story）
               </a>
 
