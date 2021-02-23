@@ -56,6 +56,7 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
+
     public int saveBlog(Blog blog) {
         int i = blogMapper.saveBlog(blog);
         Long blogId = blog.getId();
@@ -74,6 +75,7 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
+
     public int updateBlog(Blog blog) {
         int i = blogMapper.updateBlog(blog);
         Long blogId = blog.getId();
@@ -88,6 +90,7 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
+
     public int deleteById(Long id) {
         Blog blog = new Blog();
         blog.setId(id);
@@ -139,6 +142,7 @@ public class BlogServiceImpl implements BlogService {
 
 
     @Override
+
     public Blog showBlog(Long id){
         Blog blog = blogMapper.findOneById(id);
         blogMapper.updateViews(blog.getId(), (long) (blog.getViews() + 1));

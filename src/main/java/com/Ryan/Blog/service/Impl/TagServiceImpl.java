@@ -6,6 +6,8 @@ import com.Ryan.Blog.pojo.Blog;
 import com.Ryan.Blog.pojo.Tag;
 import com.Ryan.Blog.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -31,6 +33,7 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
+    @CacheEvict(value = "tags",key = "'tagsList'",allEntries = true)
     public int addTag(Tag tag) {
         int i = mapper.insert(tag);
         return i;
@@ -45,6 +48,7 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
+    @CacheEvict(value = "tags",key = "'tagsList'",allEntries = true)
     public int updateTag(Tag tag) {
         int i = mapper.updateByPrimaryKey(tag);
         return i;
@@ -59,6 +63,7 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
+    @CacheEvict(value = "tags",key = "'tagsList'",allEntries = true)
     public int deleteById(Integer id) {
         Tag tag = new Tag();
         tag.setId(id);
@@ -66,6 +71,7 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
+    @Cacheable(value = "tags",key = "'tagsList'")
     public List<Tag> findAllShow() {
         List<Tag> tags = mapper.findAllTagAndBlog();
         for (Tag tag : tags) {

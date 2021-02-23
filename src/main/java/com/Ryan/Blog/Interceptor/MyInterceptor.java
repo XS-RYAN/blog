@@ -16,12 +16,10 @@ public class MyInterceptor implements HandlerInterceptor {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         if (user == null){
-            request.setAttribute("msg","没有权限，先登录啦，扑街");
-            request.getRequestDispatcher("/login").forward(request,response);
+            request.getRequestDispatcher("/fuxku").forward(request,response);
             return false;
         }
         return true;
-
     }
 
     @Override

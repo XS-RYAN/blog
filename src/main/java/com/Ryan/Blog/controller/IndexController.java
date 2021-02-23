@@ -10,11 +10,13 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +33,8 @@ public class IndexController {
 
 
     @RequestMapping("/")
-    public String toIndex(Model model,@RequestParam(value = "pageNum",defaultValue = "1")Integer pageNum){
+//    @Cacheable(value = "BlogIndex",key = "'IndexList'")
+    public String toIndex(Model model, @RequestParam(value = "pageNum",defaultValue = "1")Integer pageNum, HttpSession session){
         List<Tag> tags = tagService.findAll();
         List<Type> types = typeService.findAll();
         for (Type type : types) {
@@ -42,11 +45,9 @@ public class IndexController {
         }
         types.removeIf(type -> type.getBlogs().size() < 1);
 
-
         List<Blog> recommendBlog = blogService.recommendBlog();
 
-
-        PageHelper.startPage(pageNum,5);
+        PageHelper.startPage(pageNum,7);
         List<Blog> blogs = blogService.showBlogs();
         PageInfo<Blog> pageInfo = new PageInfo<>(blogs);
 

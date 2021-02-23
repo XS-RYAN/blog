@@ -6,6 +6,8 @@ import com.Ryan.Blog.pojo.Blog;
 import com.Ryan.Blog.pojo.Type;
 import com.Ryan.Blog.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,6 +27,7 @@ public class TypeServiceImpl implements TypeService {
     }
 
     @Override
+    @CacheEvict(value = "types",key = "'typesList'",allEntries = true)
     public void addType(Type type) {
         mapper.insert(type);
     }
@@ -46,16 +49,19 @@ public class TypeServiceImpl implements TypeService {
     }
 
     @Override
+    @CacheEvict(value = "types",key = "'typesList'",allEntries = true)
     public void Update(Type type) {
         mapper.updateByPrimaryKey(type);
     }
 
     @Override
+    @CacheEvict(value = "types",key = "'typesList'",allEntries = true)
     public void deleteById(Integer id) {
         mapper.deleteByPrimaryKey(id);
     }
 
     @Override
+    @Cacheable(value = "types",key = "'typesList'")
     public List<Type> findAllShow() {
         List<Type> types = findAll();
 

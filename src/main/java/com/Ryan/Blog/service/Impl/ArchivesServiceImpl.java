@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,7 +25,7 @@ public class ArchivesServiceImpl implements ArchivesService {
     @Override
     public Map<String, List<Blog>> blogAndYear() {
         List<String> year = archivesMapper.findAllYear();
-        Map<String, List<Blog>> map = new HashMap<>();
+        Map<String, List<Blog>> map = new LinkedHashMap<>();
         for (String s : year) {
             List<Blog> blogs = archivesMapper.findBlogByYear(s);
             map.put(s,blogs);
